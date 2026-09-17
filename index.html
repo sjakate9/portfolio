@@ -1,0 +1,407 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .editorial-grid {
+      background-size: 24px 24px;
+      background-image: radial-gradient(circle, #E5E5E5 0.75px, transparent 0.75px);
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-surface": "#1b1c1c",
+            "on-secondary": "#ffffff",
+            "border-muted": "#E5E5E5",
+            "error-container": "#ffdad6",
+            "tertiary-fixed-dim": "#c6c6c6",
+            "primary-container": "#1b1b1b",
+            "on-tertiary-fixed-variant": "#474747",
+            "canvas-base": "#FFFFFF",
+            "on-secondary-container": "#636262",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#848484",
+            "surface-container-low": "#f5f3f3",
+            "surface-tint": "#5e5e5e",
+            "on-surface-variant": "#4c4546",
+            "surface-bright": "#fbf9f9",
+            "tertiary-fixed": "#e2e2e2",
+            "surface-container-high": "#e9e8e7",
+            "inverse-primary": "#c6c6c6",
+            "surface-container": "#efeded",
+            "surface": "#fbf9f9",
+            "tertiary-container": "#1b1b1b",
+            "border-strong": "#000000",
+            "accent-electric-blue": "#0047FF",
+            "surface-subtle": "#F7F7F7",
+            "error": "#ba1a1a",
+            "secondary": "#5f5e5e",
+            "accent-digital-violet": "#7000FF",
+            "inverse-on-surface": "#f2f0f0",
+            "primary-fixed": "#e2e2e2",
+            "surface-dim": "#dbdad9",
+            "secondary-fixed-dim": "#c8c6c5",
+            "secondary-fixed": "#e5e2e1",
+            "on-primary": "#ffffff",
+            "primary-fixed-dim": "#c6c6c6",
+            "on-primary-fixed": "#1b1b1b",
+            "outline-variant": "#cfc4c5",
+            "outline": "#7e7576",
+            "surface-variant": "#e3e2e2",
+            "on-background": "#1b1c1c",
+            "primary": "#000000",
+            "on-tertiary-fixed": "#1b1b1b",
+            "secondary-container": "#e2dfde",
+            "accent-hyper-orange": "#FF4D00",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "tertiary": "#000000",
+            "on-tertiary-container": "#848484",
+            "on-secondary-fixed-variant": "#474746",
+            "on-secondary-fixed": "#1c1b1b",
+            "surface-container-highest": "#e3e2e2",
+            "inverse-surface": "#303031",
+            "on-tertiary": "#ffffff",
+            "accent-acid-lime": "#A6FF00",
+            "on-primary-fixed-variant": "#474747",
+            "background": "#fbf9f9"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          spacing: {
+            "space-sm": "0.5rem",
+            gutter: "1.5rem",
+            "gutter-desktop": "2.5rem",
+            "margin-desktop": "3.5rem",
+            "space-xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-lg": "1.75rem",
+            margin: "1.25rem",
+            "space-2xl": "5rem"
+          },
+          fontFamily: {
+            "display-hero": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "headline-sm": ["Inter", "sans-serif"],
+            "display-hero-mobile": ["Inter", "sans-serif"],
+            "headline-md": ["Inter", "sans-serif"],
+            "label-mono-sm": ["JetBrains Mono", "monospace"],
+            "code-inline": ["JetBrains Mono", "monospace"],
+            "headline-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "label-mono-lg": ["JetBrains Mono", "monospace"],
+            "body-sm": ["Inter", "sans-serif"],
+            "headline-lg-mobile": ["Inter", "sans-serif"]
+          },
+          fontSize: {
+            "display-hero": ["5rem", { lineHeight: "1.0", letterSpacing: "-0.04em", fontWeight: "700" }],
+            "body-lg": ["1.125rem", { lineHeight: "1.6", letterSpacing: "-0.01em", fontWeight: "400" }],
+            "headline-sm": ["1.25rem", { lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "display-hero-mobile": ["2.75rem", { lineHeight: "1.05", letterSpacing: "-0.03em", fontWeight: "700" }],
+            "headline-md": ["2rem", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "label-mono-sm": ["0.6875rem", { lineHeight: "1.2", letterSpacing: "0.08em", fontWeight: "500" }],
+            "code-inline": ["0.875rem", { lineHeight: "1.4", letterSpacing: "-0.01em", fontWeight: "400" }],
+            "headline-lg": ["3rem", { lineHeight: "1.1", letterSpacing: "-0.03em", fontWeight: "600" }],
+            "body-md": ["0.9375rem", { lineHeight: "1.6", letterSpacing: "0em", fontWeight: "400" }],
+            "label-mono-lg": ["0.875rem", { lineHeight: "1.2", letterSpacing: "0.04em", fontWeight: "500" }],
+            "body-sm": ["0.8125rem", { lineHeight: "1.5", letterSpacing: "0em", fontWeight: "400" }],
+            "headline-lg-mobile": ["2rem", { lineHeight: "1.15", letterSpacing: "-0.02em", fontWeight: "600" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-body-md text-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary" style="cursor: grabbing;">
+<!-- 1. HEADER / NAVIGATION (Pure typography, no graphic icon, updated routes) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-border-muted transition-all">
+<div class="h-16 w-full px-gutter lg:px-gutter-desktop flex items-center justify-between gap-space-md">
+<!-- Pure Typographic Identity -->
+<a class="flex flex-col group cursor-pointer" href="#">
+<span class="font-headline-sm font-bold tracking-tight text-primary text-base sm:text-lg group-hover:text-accent-electric-blue transition-colors uppercase">
+          SIMRAN JAKATE
+        </span>
+<span class="font-label-mono-sm text-[11px] tracking-wider text-on-surface-variant uppercase">Mechanical Engineer</span>
+</a>
+<!-- Primary Navigation Links (WORK, EXPERIENCE, PROJECTS, CONTACT) -->
+<nav class="hidden md:flex items-center gap-1 px-1.5 py-1 rounded bg-surface-container-low border border-border-muted/70 text-on-surface">
+<a class="px-space-md py-1 font-label-mono-sm text-label-mono-sm uppercase rounded bg-primary text-on-primary font-semibold transition-all shadow-sm" href="#profile">
+          WORK
+        </a>
+<a class="px-space-md py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant hover:text-primary hover:bg-surface-subtle transition-all rounded" href="#experience">
+          EXPERIENCE
+        </a>
+<a class="px-space-md py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant hover:text-primary hover:bg-surface-subtle transition-all rounded" href="#projects">
+          PROJECTS
+        </a>
+<a class="px-space-md py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant hover:text-primary hover:bg-surface-subtle transition-all rounded" href="#contact">
+          CONTACT
+        </a>
+</nav>
+<!-- Meta Status & Actions -->
+<div class="flex items-center gap-space-sm">
+<div class="hidden xl:inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-subtle border border-border-muted font-label-mono-sm text-[11px] text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-accent-acid-lime animate-pulse"></span>
+<span class="">Available Oct 2026</span>
+</div>
+<a class="hidden sm:inline-flex items-center px-space-sm py-1 rounded bg-surface-subtle hover:bg-surface-container border border-accent-electric-blue text-accent-electric-blue font-label-mono-sm text-label-mono-sm font-semibold transition-all hover:border-border-strong" href="https://www.linkedin.com/in/simran-jakate" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<a class="inline-flex items-center px-space-sm py-1 rounded bg-surface-subtle hover:bg-surface-container border border-accent-electric-blue text-accent-electric-blue font-label-mono-sm text-label-mono-sm font-semibold transition-all hover:border-border-strong" href="mailto:jakatesimran@gmail.com">Email</a>
+</div>
+</div>
+</header>
+<main class="w-full pt-16 bg-surface min-h-screen">
+<div class="flex flex-col w-full">
+<!-- 2. HERO & EDITORIAL INTRODUCTION (ReadyMag bespoke typography, bio, skills pills, coordinates) -->
+<section class="w-full px-gutter lg:px-gutter-desktop pt-space-xl pb-space-2xl bg-canvas-base border-b border-border-muted editorial-grid" id="profile">
+<div class="w-full max-w-7xl mx-auto flex flex-col gap-space-xl">
+<!-- Editorial Meta Ticker -->
+
+<!-- Hero Headline & Editorial Craft Profile -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg lg:gap-space-xl items-start">
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<div class="inline-flex items-center gap-2 font-label-mono-sm text-label-mono-sm uppercase text-accent-electric-blue tracking-wider font-semibold"><span class="">[01] PROFILE &amp; BACKGROUND</span></div>
+<h1 class="font-display-hero text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-primary leading-[1.03] uppercase">
+                Simran<br>Jakate
+              </h1>
+<p class="font-body-lg text-lg sm:text-xl text-on-surface font-light leading-relaxed max-w-3xl pt-space-xs">Mechanical Engineering graduate (May 2026) from <span class="font-semibold text-primary">Rutgers University</span> with an Energy Systems Certificate and Minor in Mathematics.</p>
+<!-- Personal Statement Bio -->
+<div class="font-body-md text-on-surface-variant leading-relaxed max-w-3xl space-y-3 pt-space-xs border-l-2 border-primary pl-space-md">
+<p class="">Passionate about operating at the forefront of engineering innovation, I focus on turning complex technical challenges into practical, high-impact solutions. I thrive in collaborative team environments—working cross-functionally alongside fellow engineers, machinists, and fabricators to bridge analytical modeling with hands-on prototyping and physical validation.</p>
+</div>
+<!-- Interactive / Editorial Competencies & Skills Pills -->
+<div class="pt-space-md flex flex-col gap-space-xs">
+<span class="font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant font-medium tracking-wider">CORE SKILLS &amp; TOOLS:</span>
+<div class="flex flex-wrap gap-2 pt-1"><span class="px-3 py-1.5 rounded-full bg-surface-subtle border border-border-muted font-label-mono-sm text-xs text-primary hover:border-border-strong hover:bg-accent-acid-lime hover:text-primary cursor-default transition-all">5S &amp; Lean Systems</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-subtle border border-border-muted font-label-mono-sm text-xs text-primary hover:border-border-strong hover:bg-accent-acid-lime hover:text-primary cursor-default transition-all">AutoCAD</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-subtle border border-border-muted font-label-mono-sm text-xs text-primary hover:border-border-strong hover:bg-accent-acid-lime hover:text-primary cursor-default transition-all">FEA (Finite Element Analysis)</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-subtle border border-border-muted font-label-mono-sm text-xs text-primary hover:border-border-strong hover:bg-accent-acid-lime hover:text-primary cursor-default transition-all">MATLAB</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-subtle border border-border-muted font-label-mono-sm text-xs text-primary hover:border-border-strong hover:bg-accent-acid-lime hover:text-primary cursor-default transition-all">Microsoft Suite</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-subtle border border-border-muted font-label-mono-sm text-xs text-primary hover:border-border-strong hover:bg-accent-acid-lime hover:text-primary cursor-default transition-all">Simulink</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-subtle border border-border-muted font-label-mono-sm text-xs text-primary hover:border-border-strong hover:bg-accent-acid-lime hover:text-primary cursor-default transition-all">SolidWorks</span>
+<span class="px-3 py-1.5 rounded-full bg-surface-subtle border border-border-muted font-label-mono-sm text-xs text-primary hover:border-border-strong hover:bg-accent-acid-lime hover:text-primary cursor-default transition-all">Vertical Mill &amp; Lathe Machining</span></div>
+</div>
+</div>
+<!-- Sidebar Dossier & Coordinates Card -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="p-space-md bg-surface-subtle border border-border-strong rounded-none shadow-[4px_4px_0px_#000000] flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs border-b border-border-muted font-label-mono-sm text-label-mono-sm"><span class="text-primary font-bold uppercase">OVERVIEW</span></div>
+<div class="space-y-2.5 font-label-mono-sm text-xs text-on-surface">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant uppercase">Institution:</span>
+<span class="font-semibold text-primary">Rutgers Univ. (SOE)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant uppercase">Major:</span>
+<span class="font-semibold text-primary">B.S. Mechanical Eng.</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant uppercase">Certificate:</span>
+<span class="font-medium text-accent-electric-blue">Energy Systems</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant uppercase">Minor:</span>
+<span class="font-semibold text-primary">Mathematics</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant uppercase">Location:</span>
+<span class="text-primary">New Brunswick, NJ</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant uppercase">Availability:</span>
+<span class="inline-flex items-center gap-1 font-semibold text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-acid-lime"></span> Oct 2026
+                    </span>
+</div>
+</div>
+<!-- Contact Coordinates Strip -->
+<div class="pt-space-xs border-t border-border-muted flex flex-col gap-1.5 font-label-mono-sm text-[11px]"><a class="hover:text-accent-electric-blue flex items-center gap-2 py-0.5 text-xs transition-colors" href="mailto:jakatesimran@gmail.com"><span class="text-on-surface-variant font-medium">✉</span><span class="text-primary font-medium tracking-tight">jakatesimran@gmail.com</span></a><a class="hover:text-accent-electric-blue flex items-center gap-2 py-0.5 text-xs transition-colors" href="tel:+19089920879"><span class="text-on-surface-variant font-medium">☎</span><span class="text-primary font-medium tracking-tight">+1 (908) 992-0879</span></a></div>
+
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<!-- 3. INTERNSHIP & CO-OP HIGHLIGHTS (Curated chronological editorial entries) -->
+<section class="w-full px-gutter lg:px-gutter-desktop py-space-2xl bg-surface border-b border-border-muted" id="experience">
+<div class="w-full max-w-7xl mx-auto flex flex-col gap-space-lg">
+<!-- Section Title Strip -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm pb-space-sm border-b border-border-muted">
+<div>
+<span class="font-label-mono-sm text-label-mono-sm text-accent-hyper-orange uppercase font-semibold">[02] PROFESSIONAL EXPERIENCE</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight font-bold mt-1">Internship &amp; Industry Co-Op Highlights</h2>
+</div>
+
+</div>
+<!-- Chronological Polish Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Co-op 01: Merit Controls -->
+<article class="flex flex-col justify-between bg-canvas-base border border-border-strong p-space-lg shadow-[4px_4px_0px_#000000] hover:shadow-[6px_6px_0px_#000000] transition-all group">
+<div class="flex flex-col gap-space-sm">
+<!-- Meta Ribbon -->
+<div class="flex flex-wrap items-center justify-between font-label-mono-sm text-xs pb-space-xs border-b border-border-muted text-on-surface-variant">
+<span class="text-primary font-bold uppercase">MAY 2025 – DEC 2025</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary">SOMERVILLE, NJ</span>
+</div>
+<div class="pt-1">
+<h3 class="font-headline-sm text-xl font-bold text-primary group-hover:text-accent-electric-blue transition-colors">
+                    Merit Controls
+                  </h3>
+<p class="font-label-mono-sm text-xs text-accent-electric-blue font-semibold uppercase tracking-wider mt-0.5">
+                    Design Engineering Co-Op
+                  </p>
+</div>
+<ul class="font-body-md text-sm text-on-surface-variant space-y-2.5 pt-2 list-none"><li class="flex items-start gap-2"><span class="font-label-mono-sm text-primary font-bold">↳</span><span class=""><strong class="text-on-surface">Structural &amp; Wind Load Calculations:</strong> Computed structural calculations and hand analysis to verify mast load distributions and safety margins for utility-scale solar trackers in high-wind conditions.</span></li><li class="flex items-start gap-2"><span class="font-label-mono-sm text-primary font-bold">↳</span><span class=""><strong class="text-on-surface">Automated BOM Generation:</strong> Built custom Excel tools and macros to automate bill-of-materials compilation, cutting standard procurement prep from days to just a few hours.</span></li><li class="flex items-start gap-2"><span class="font-label-mono-sm text-primary font-bold">↳</span><span class=""><strong class="text-on-surface">Quality &amp; Specification Reviews:</strong> Collaborated cross-functionally with team members and customers to ensure all technical requirements were met and production documentation accurately reflected engineering specs.</span></li></ul>
+</div>
+<div class="pt-space-md mt-space-md border-t border-border-muted flex flex-wrap items-center justify-between gap-2">
+<div class="flex flex-wrap gap-1.5 font-label-mono-sm text-[11px]"><span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-on-surface">AutoCAD</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-on-surface">Structural Calculations</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-on-surface">BOM Automation</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-on-surface">Quality Assurance</span></div>
+
+</div>
+</article>
+<!-- Co-op 02: Specified Technologies Inc. -->
+<article class="flex flex-col justify-between bg-canvas-base border border-border-strong p-space-lg shadow-[4px_4px_0px_#000000] hover:shadow-[6px_6px_0px_#000000] transition-all group">
+<div class="flex flex-col gap-space-sm">
+<!-- Meta Ribbon -->
+<div class="flex flex-wrap items-center justify-between font-label-mono-sm text-xs pb-space-xs border-b border-border-muted text-on-surface-variant">
+<span class="text-primary font-bold uppercase">JAN 2026 – MAY 2026</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary">BURLINGTON, NJ</span>
+</div>
+<div class="pt-1">
+<h3 class="font-headline-sm text-xl font-bold text-primary group-hover:text-accent-hyper-orange transition-colors">
+                    Specified Technologies Inc. (STI)
+                  </h3>
+<p class="font-label-mono-sm text-xs font-semibold uppercase tracking-wider mt-0.5 text-accent-electric-blue">
+                    Industrial Engineering Intern
+                  </p>
+</div>
+<ul class="font-body-md text-sm text-on-surface-variant space-y-2.5 pt-2 list-none"><li class="flex items-start gap-2"><span class="font-label-mono-sm text-primary font-bold">↳</span><span class=""><strong class="text-on-surface">Packaging &amp; Freight Optimization:</strong> Redesigned bulk silicone caulking packaging and container layouts, cutting overseas shipping volume by half.</span></li><li class="flex items-start gap-2"><span class="font-label-mono-sm text-primary font-bold">↳</span><span class=""><strong class="text-on-surface">5S &amp; Shop-Floor Flow:</strong> Mapped workflow bottlenecks using spaghetti diagrams and root-cause matrices, eliminating redundant operator travel by 34%.</span></li><li class="flex items-start gap-2"><span class="font-label-mono-sm text-primary font-bold">↳</span><span class=""><strong class="text-on-surface">Mold &amp; Assembly Fixtures:</strong> Designed custom ergonomic assembly jigs and multi-cavity injection mold tooling in SolidWorks to speed up line changeovers.</span></li></ul>
+</div>
+<div class="pt-space-md mt-space-md border-t border-border-muted flex flex-wrap items-center justify-between gap-2">
+<div class="flex flex-wrap gap-1.5 font-label-mono-sm text-[11px]">
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-on-surface">SolidWorks Mold</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-on-surface">5S Implementation</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-on-surface">Spaghetti Mapping</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-on-surface">DFMA</span>
+</div>
+
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- 4. PROJECTS SHOWCASE (The 3 key engineering projects with in-depth dedicated page prompts) -->
+<section class="w-full px-gutter lg:px-gutter-desktop py-space-2xl bg-canvas-base" id="projects">
+<div class="w-full max-w-7xl mx-auto flex flex-col gap-space-xl">
+<!-- Section Heading -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm pb-space-sm border-b border-border-muted">
+<div>
+<span class="font-label-mono-sm text-label-mono-sm text-accent-electric-blue uppercase font-semibold">[03] KEY PROJECTS</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight font-bold mt-1">Featured Mechanical Systems &amp; Research</h2>
+</div>
+
+</div>
+<!-- Project Cards Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Project 01: Rutgers Solar Car -->
+<article class="flex flex-col justify-between bg-surface-subtle border border-border-strong hover:shadow-[5px_5px_0px_#000000] transition-all group">
+<div>
+<!-- Visual Preview Header -->
+<div class="relative w-full h-56 bg-surface-container overflow-hidden border-b border-border-strong flex items-center justify-center">
+<img alt="Rutgers Solar Car vehicle racing on track" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCohw6zVxZCQfkBd2V97B_hBDG9R1rlXhlgMvOghcVFrHwGhN87kbXerIgP4T-g6ps2ePFdL5BzDL6dDhQOgBs8uxsnaR7B-UuesuDRFmiz2Z17rmr-KSfE3vbiI4st65KBOiKkm7merGk-p40SbUSNoegiGaxp6s9es9OpXSEkYvk4rBSgVSrO86CEUbYEx1PxG6B_SnZ00R1_4ZEvCWHXSFIrbTTeR5dlpx4J3fgTWDLMSU00ifjSqCcyseFoGpDtpQ">
+
+
+
+</div>
+<!-- Text Content -->
+<div class="p-space-md flex flex-col gap-space-xs">
+
+<h3 class="font-headline-sm text-lg font-bold text-primary group-hover:text-accent-electric-blue transition-colors pt-1 leading-snug">Rutgers Solar Car Team</h3>
+<div class="font-label-mono-sm text-xs text-accent-hyper-orange font-medium uppercase">
+                    Role: Vice President &amp; Former Chassis Lead
+                  </div>
+<p class="font-body-sm text-on-surface-variant pt-2 leading-relaxed">Led cross-subteam coordination, build timelines, and race logistics to ready the vehicle for the Formula Sun Grand Prix (FSGP). Directed chassis structural modeling and static FEA load simulations to validate driver safety cell integrity for the competition's Vehicle Design Report (VDR).</p>
+</div>
+</div>
+<!-- Footer CTA linking to Dedicated Case Study -->
+<div class="p-space-md pt-0 flex flex-col gap-3">
+<div class="flex flex-wrap gap-1 font-label-mono-sm text-[10px]"><span class="px-1.5 py-0.5 bg-canvas-base border border-border-muted text-on-surface">Leadership</span><span class="px-1.5 py-0.5 bg-canvas-base border border-border-muted text-on-surface">SolidWorks</span><span class="px-1.5 py-0.5 bg-canvas-base border border-border-muted text-on-surface">Static FEA</span></div>
+<a class="w-full flex items-center justify-between px-space-sm py-2 bg-canvas-base border border-border-strong text-primary hover:bg-primary hover:text-on-primary font-label-mono-sm text-xs font-semibold uppercase transition-all" href="#rutgers-solar-car"><span class="">LEARN MORE</span><span class="">→</span></a>
+</div>
+</article>
+<!-- Project 02: TORO-VR -->
+<article class="flex flex-col justify-between bg-surface-subtle border border-border-strong hover:shadow-[5px_5px_0px_#000000] transition-all group">
+<div>
+<!-- Visual Preview Header -->
+<div class="relative w-full h-56 bg-surface-container overflow-hidden border-b border-border-strong flex items-center justify-center"><img alt="TORO-VR 6-DOF Stewart platform kinematic motion rig with red racing seat" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDelayf5GEun4MLZLb8hAWORV-UarOaSBeM256mBqZjRfaR8FDnext_zfbC5EkapyrEgC5f5iuv711kiIjvAnpJQyX4SqoN9KHJIjqbZfppo-Iwx_EC1cC40vTj2MbQ85xt4iixlRMD1qem6FIFFG9l63iPI57UTTmX_aAXIknK9JHGRp1ahcPc1OroKE5WF3fIRO2_qFzs8EimIY1Yd1slgJQEzHy6JoBkG9iwSudcfrLIB9Xm6nlv1cpIB3qWtGyTnA"></div>
+<!-- Text Content -->
+<div class="p-space-md flex flex-col gap-space-xs">
+
+<h3 class="font-headline-sm text-lg font-bold text-primary group-hover:text-accent-digital-violet transition-colors pt-1 leading-snug">
+                    TORO-VR: 6-DOF Kinematic Motion Rig
+                  </h3>
+<div class="font-label-mono-sm text-xs text-accent-digital-violet font-medium uppercase">
+                    Role: Peripheral Sub-assemblies &amp; Kinematics
+                  </div>
+<p class="font-body-sm text-on-surface-variant pt-2 leading-relaxed">Collaborated with a multidisciplinary team to develop a 6-DOF Stewart platform motion simulator for immersive racing. Focused on engineering structural frame subassemblies, peripheral mounting systems, and integrating hardware with the VR simulation environment.</p>
+</div>
+</div>
+<!-- Footer CTA linking to Dedicated Case Study -->
+<div class="p-space-md pt-0 flex flex-col gap-3">
+<div class="flex flex-wrap gap-1 font-label-mono-sm text-[10px]"><span class="px-1.5 py-0.5 bg-canvas-base border border-border-muted text-on-surface">SolidWorks</span><span class="px-1.5 py-0.5 bg-canvas-base border border-border-muted text-on-surface">VR Integration</span><span class="px-1.5 py-0.5 bg-canvas-base border border-border-muted text-on-surface">Communication</span></div>
+<a class="w-full flex items-center justify-between px-space-sm py-2 bg-canvas-base border border-border-strong text-primary hover:bg-primary hover:text-on-primary font-label-mono-sm text-xs font-semibold uppercase transition-all" href="#toro-vr"><span class="">LEARN MORE</span><span class="">→</span></a>
+</div>
+</article>
+<!-- Project 03: Snow Drone -->
+<article class="flex flex-col justify-between bg-surface-subtle border border-border-strong hover:shadow-[5px_5px_0px_#000000] transition-all group">
+<div>
+<!-- Visual Preview Header -->
+<div class="relative w-full h-56 bg-surface-container overflow-hidden border-b border-border-strong flex items-center justify-center"><img alt="Autonomous Snow &amp; Ice Detection UAV quadcopter prototype on ground" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBW_APbvjbXFu8DvClSZvnNQ-qoAPSNWcHEA1g2yRw-hRdx7KXfXlXhda_ZI0AUDbQ2sSolicKZ03LPFgTCOuuGO0g0D-gy8lA8LtBZYcX3AuYg5QPkC5GwKsiTbx1n8iKz-TT6n1gn7kSd3oP2aDgqVgX6D3nGY_ZuEtTG2PO3vFSiPaO27Tb2I6_dyJIN3e37Kjr1lHydxRQPTdhpANhCerfL5tA9vEPaB-IqG6PoBB6sFaULL7kzJqcHUgr9Mylzg"></div>
+<!-- Text Content -->
+<div class="p-space-md flex flex-col gap-space-xs">
+
+<h3 class="font-headline-sm text-lg font-bold text-primary group-hover:text-accent-electric-blue transition-colors pt-1 leading-snug">Snow Drone Research Project</h3>
+<div class="font-label-mono-sm text-xs text-accent-electric-blue font-medium uppercase">
+                    Role: Research Assistant &amp; Entrepreneurial Lead
+                  </div>
+<p class="font-body-sm text-on-surface-variant pt-2 leading-relaxed">Conducted feasibility research and conceptual development for a drone-based rooftop system to dispense salt and prevent ice formation. Built an exploratory physical prototype to evaluate hardware constraints alongside payload load capacity and flight sizing modeling in MATLAB, and 20+ stakeholder interviews via the NSF I-Corps program.</p>
+</div>
+</div>
+<!-- Footer CTA linking to Dedicated Case Study -->
+<div class="p-space-md pt-0 flex flex-col gap-3">
+<div class="flex flex-wrap gap-1 font-label-mono-sm text-[10px]"><span class="px-1.5 py-0.5 bg-canvas-base border border-border-muted text-on-surface">MATLAB</span><span class="px-1.5 py-0.5 bg-canvas-base border border-border-muted text-on-surface">Customer Discovery</span><span class="px-1.5 py-0.5 bg-canvas-base border border-border-muted text-on-surface">Literature Review</span></div>
+<a class="w-full flex items-center justify-between px-space-sm py-2 bg-canvas-base border border-border-strong text-primary hover:bg-primary hover:text-on-primary font-label-mono-sm text-xs font-semibold uppercase transition-all" href="#snow-drone"><span class="">LEARN MORE</span><span class="">→</span></a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- 5. DIRECT ENGAGEMENT & CONTACT TERMINAL -->
+
+</div>
+</main>
+<!-- 5. REFINED MINIMAL EDITORIAL FOOTER -->
+<footer class="w-full border-t border-border-strong bg-canvas-base py-space-md" id="contact"><div class="w-full max-w-7xl mx-auto px-gutter lg:px-gutter-desktop flex flex-wrap items-center justify-between gap-space-md font-label-mono-sm text-xs tracking-wider uppercase"><div class="flex flex-wrap items-center gap-space-lg"><div class="flex items-center gap-2 text-primary font-bold"><span class="">CONTACT</span></div><a class="text-primary hover:text-accent-electric-blue transition-colors flex items-center gap-1.5" style="text-transform: none;" href="mailto:jakatesimran@gmail.com"><span class="text-on-surface-variant font-medium">✉</span><span style="text-transform: lowercase;" class="">jakatesimran@gmail.com</span></a><a class="text-primary hover:text-accent-electric-blue transition-colors flex items-center gap-1.5" href="tel:+19089920879"><span class="text-on-surface-variant font-medium">☎</span><span class="">+1 (908) 992-0879</span></a><a class="text-primary hover:text-accent-electric-blue transition-colors flex items-center gap-1.5" style="text-transform: none;" href="https://www.linkedin.com/in/simran-jakate" rel="noopener noreferrer" target="_blank"><span style="text-transform: none;" class="">LinkedIn</span><span class="text-accent-electric-blue">↗</span></a></div><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-subtle hover:bg-primary hover:text-on-primary border border-border-strong text-primary transition-all shadow-sm font-label-mono-sm text-xs font-semibold cursor-pointer"><span class="">BACK TO TOP</span><span class="">↑</span></a></div></footer>
+
+
+</body></html>
