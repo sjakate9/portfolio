@@ -1,0 +1,879 @@
+<!DOCTYPE html><html lang="en" style=""><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .cad-blueprint-grid {
+      background-size: 20px 20px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 71, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 71, 255, 0.05) 1px, transparent 1px);
+    }
+    .fea-stress-gradient {
+      background: linear-gradient(90deg, #0022ff 0%, #00d4ff 25%, #00ff66 50%, #ffe600 75%, #ff0000 100%);
+    }
+    .road-asphalt-pattern {
+      background-image: radial-gradient(#d4d4d8 0.75px, transparent 0.75px);
+      background-size: 14px 14px;
+    }
+    #mini-solar-car {
+      will-change: transform, left, top;
+      transition: opacity 0.3s ease;
+      filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.35));
+    }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "accent-hyper-orange": "#FF4D00",
+          "secondary-container": "#e2dfde",
+          "on-secondary": "#ffffff",
+          "on-tertiary-fixed-variant": "#474747",
+          "surface-container-high": "#e9e8e7",
+          "border-strong": "#000000",
+          "inverse-on-surface": "#f2f0f0",
+          "background": "#fbf9f9",
+          "on-error": "#ffffff",
+          "on-tertiary-fixed": "#1b1b1b",
+          "tertiary-fixed-dim": "#c6c6c6",
+          "on-surface": "#1b1c1c",
+          "accent-acid-lime": "#A6FF00",
+          "on-surface-variant": "#4c4546",
+          "border-muted": "#E5E5E5",
+          "tertiary": "#000000",
+          "error": "#ba1a1a",
+          "surface-bright": "#fbf9f9",
+          "on-primary-fixed-variant": "#474747",
+          "surface-subtle": "#F7F7F7",
+          "canvas-base": "#FFFFFF",
+          "primary-fixed-dim": "#c6c6c6",
+          "surface-container-lowest": "#ffffff",
+          "on-primary-container": "#848484",
+          "accent-digital-violet": "#7000FF",
+          "on-error-container": "#93000a",
+          "on-tertiary-container": "#848484",
+          "primary": "#000000",
+          "on-primary-fixed": "#1b1b1b",
+          "on-secondary-fixed": "#1c1b1b",
+          "on-secondary-container": "#636262",
+          "surface-dim": "#dbdad9",
+          "error-container": "#ffdad6",
+          "secondary-fixed": "#e5e2e1",
+          "secondary": "#5f5e5e",
+          "primary-fixed": "#e2e2e2",
+          "surface": "#fbf9f9",
+          "surface-container-low": "#f5f3f3",
+          "tertiary-fixed": "#e2e2e2",
+          "surface-tint": "#5e5e5e",
+          "on-tertiary": "#ffffff",
+          "on-secondary-fixed-variant": "#474746",
+          "secondary-fixed-dim": "#c8c6c5",
+          "surface-variant": "#e3e2e2",
+          "tertiary-container": "#1b1b1b",
+          "inverse-primary": "#c6c6c6",
+          "surface-container-highest": "#e3e2e2",
+          "primary-container": "#1b1b1b",
+          "on-background": "#1b1c1c",
+          "outline-variant": "#cfc4c5",
+          "outline": "#7e7576",
+          "surface-container": "#efeded",
+          "accent-electric-blue": "#0047FF",
+          "on-primary": "#ffffff",
+          "inverse-surface": "#303031"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-sm": "0.5rem",
+          "gutter": "1.5rem",
+          "space-xs": "0.25rem",
+          "space-xl": "3rem",
+          "space-2xl": "5rem",
+          "margin": "1.25rem",
+          "space-md": "1rem",
+          "space-lg": "1.75rem",
+          "margin-desktop": "3.5rem",
+          "gutter-desktop": "2.5rem"
+        },
+        "fontFamily": {
+          "label-mono-sm": ["JetBrains Mono"],
+          "headline-lg-mobile": ["Inter"],
+          "display-hero-mobile": ["Inter"],
+          "body-lg": ["Inter"],
+          "display-hero": ["Inter"],
+          "headline-md": ["Inter"],
+          "label-mono-lg": ["JetBrains Mono"],
+          "headline-lg": ["Inter"],
+          "headline-sm": ["Inter"],
+          "body-sm": ["Inter"],
+          "body-md": ["Inter"],
+          "code-inline": ["JetBrains Mono"]
+        },
+        "fontSize": {
+          "label-mono-sm": ["0.6875rem", { "lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "500" }],
+          "headline-lg-mobile": ["2rem", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+          "display-hero-mobile": ["2.75rem", { "lineHeight": "1.05", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+          "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+          "display-hero": ["5rem", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+          "headline-md": ["2rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+          "label-mono-lg": ["0.875rem", { "lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "500" }],
+          "headline-lg": ["3rem", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+          "headline-sm": ["1.25rem", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "body-sm": ["0.8125rem", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+          "body-md": ["0.9375rem", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+          "code-inline": ["0.875rem", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+        }
+      }
+    }
+  };
+</script>
+<meta content="web_standard" name="shell-type">
+</head>
+<body class="bg-background font-body-md text-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary">
+<!-- 1. HEADER / NAVIGATION -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-border-muted transition-all">
+<div class="h-16 w-full px-gutter lg:px-gutter-desktop flex items-center justify-between gap-space-md">
+<!-- Typographic Identity linking to Home/Work -->
+<a class="flex flex-col group cursor-pointer" data-path="work" href="#">
+<span class="font-headline-sm font-bold tracking-tight text-primary text-base sm:text-lg group-hover:text-accent-electric-blue transition-colors uppercase">
+        SIMRAN JAKATE
+      </span>
+<span class="font-label-mono-sm text-[11px] tracking-wider text-on-surface-variant uppercase">Mechanical Engineer</span>
+</a>
+<!-- Primary Nav -->
+<nav class="hidden md:flex items-center gap-1 px-1.5 py-1 rounded bg-surface-container-low border border-border-muted/70 text-on-surface">
+<a class="px-space-md py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant hover:text-primary hover:bg-surface-subtle transition-all rounded" data-path="work" href="#">
+        WORK
+      </a>
+<a class="px-space-md py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant hover:text-primary hover:bg-surface-subtle transition-all rounded" data-path="experience" href="#experience">
+        EXPERIENCE
+      </a>
+<a class="px-space-md py-1 font-label-mono-sm text-label-mono-sm uppercase text-primary bg-canvas-base border border-border-muted font-semibold transition-all rounded shadow-xs" data-path="projects" href="#projects">
+        PROJECTS
+      </a>
+<a class="px-space-md py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant hover:text-primary hover:bg-surface-subtle transition-all rounded" data-path="contact" href="#contact">
+        CONTACT
+      </a>
+</nav>
+<!-- Meta Status & Actions -->
+<div class="flex items-center gap-space-sm">
+<div class="hidden xl:inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-subtle border border-border-muted font-label-mono-sm text-[11px] text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-accent-acid-lime animate-pulse"></span>
+<span class="">Available Oct 2026</span>
+</div>
+<a class="hidden sm:inline-flex items-center px-space-sm py-1 rounded bg-surface-subtle hover:bg-surface-container border border-accent-electric-blue text-accent-electric-blue font-label-mono-sm text-label-mono-sm font-semibold transition-all hover:border-border-strong" href="https://www.linkedin.com/in/simran-jakate" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<a class="inline-flex items-center px-space-sm py-1 rounded bg-surface-subtle hover:bg-surface-container border border-accent-electric-blue text-accent-electric-blue font-label-mono-sm text-label-mono-sm font-semibold transition-all hover:border-border-strong" href="mailto:jakatesimran@gmail.com">Email</a>
+</div>
+</div>
+</header>
+<!-- 2. MAIN CONTENT -->
+<main class="w-full pt-16 bg-surface min-h-screen">
+<div class="flex flex-col w-full">
+<!-- BREADCRUMB BAR -->
+<section class="w-full bg-canvas-base border-b border-border-muted py-space-sm px-gutter lg:px-gutter-desktop">
+<div class="w-full max-w-7xl mx-auto flex items-center justify-between">
+<a class="inline-flex items-center gap-2 font-label-mono-sm text-label-mono-sm text-on-surface-variant hover:text-accent-electric-blue transition-colors uppercase tracking-wider group" href="#projects">
+<span class="text-xs transition-transform group-hover:-translate-x-1">←</span>
+<span class="">BACK TO PROJECTS</span>
+</a>
+</div>
+</section>
+<!-- TOP HERO SECTION (Title + Expanded Club Mission & On-track Photo) -->
+<section class="w-full bg-canvas-base pt-space-xl pb-space-2xl px-gutter lg:px-gutter-desktop border-b border-border-muted">
+<div class="w-full max-w-7xl mx-auto flex flex-col gap-space-xl">
+<!-- Title and Narrative -->
+<div class="flex flex-col gap-space-md max-w-5xl">
+<div class="inline-flex items-center gap-2.5 font-label-mono-sm text-label-mono-sm text-accent-electric-blue tracking-widest uppercase font-semibold">
+<span class="px-2 py-0.5 bg-surface-subtle border border-accent-electric-blue/30 rounded">RUTGERS UNIVERSITY</span>
+<span class="">// FORMULA SUN GRAND PRIX &amp; AMERICAN SOLAR CHALLENGE</span>
+</div>
+<h1 class="font-headline-lg text-4xl sm:text-5xl lg:text-6xl text-primary tracking-tight font-extrabold uppercase leading-[1.05]">
+      RUTGERS SOLAR CAR TEAM
+    </h1>
+<div class="space-y-4 text-body-lg text-on-surface-variant leading-relaxed"><p class="text-base sm:text-lg text-neutral-700 leading-relaxed font-normal mb-4">
+  The Rutgers Solar Car Team is a multidisciplinary, student-led organization at Rutgers University that designs, builds, and races custom solar-powered vehicles from scratch. The team puts its engineering to the test at two major national competitions: the Formula Sun Grand Prix (FSGP), a track endurance race preceded by rigorous technical inspections, and the American Solar Challenge (ASC), a 1,500+ mile cross-country road rally.
+</p>
+<p class="text-base sm:text-lg text-neutral-700 leading-relaxed font-normal">Hyperion is the team's single-occupant competition car for the 2026 season, brought to life by over 100 students across 10 disciplines. Designed and built in-house over several years, it was engineered from the ground up through student-led machining, composite layups, and electrical work. Hyperion set a major milestone at Brainerd International Raceway during FSGP 2026, becoming the first fully in-house Rutgers solar car to pass technical scrutineering, get on track, and log official competition laps.</p></div>
+</div>
+<!-- Prominent Authentic On-Track Hero Photo -->
+<div class="flex flex-col gap-2">
+<div class="relative w-full h-[460px] sm:h-[540px] lg:h-[600px] border-2 border-border-strong overflow-hidden bg-surface-container-high group rounded shadow-sm"><img alt="Hyperion #66 aerodynamic solar race car accelerating along track" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.01] block" style="object-position: 50% 80%;" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB19_Jt7n780LCPtJ9uBBTIWBp9thnp221xDt6GJIlaiV9jL3ZgLp5LICOoQ6Q97WAh6D-QjHa1XkfLlWOJklVx2uu2mW0vUkpi2TMKtGfI0q3VH_1jNyxIi2Y2rifXED225An_cJMi-lqOO23-CqWRb72la73oPga7DMT-ofZaTfMHruaQCnUjzn1BYmVZjBAvRoOqtijBhr2zgx6GwbmUVat3Qvid520-xO69ckbyMTzngByuFaQL"><div class="absolute top-4 left-4 bg-primary/95 backdrop-blur-md text-on-primary font-label-mono-sm text-xs px-3 py-1.5 tracking-wider uppercase flex items-center gap-2 border border-white/20"><span class="">Hyperion #66 // FSGP 2026</span></div></div>
+<!-- Clean Caption Strip -->
+
+</div>
+</div>
+</section>
+<!-- 3. THE WINDING ROAD: DRAMATIC SERPENTINE SWITCHBACK RACE TRACK (MATCHING USER SKETCH) -->
+<section class="w-full bg-surface-subtle py-space-2xl px-4 sm:px-gutter lg:px-gutter-desktop border-b border-border-muted relative overflow-hidden road-asphalt-pattern" id="track-section">
+<div class="w-full max-w-7xl mx-auto flex flex-col gap-space-xl relative">
+<!-- Section Header with Road/Track Aesthetics -->
+<div class="flex flex-col items-center text-center gap-space-xs max-w-3xl mx-auto">
+
+<h2 class="font-headline-lg text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-primary mt-2">PROJECT TIMELINE &amp; MILESTONES</h2>
+
+</div>
+<!-- SERPENTINE SWITCHBACK TRACK CONTAINER -->
+<div class="relative w-full py-6 min-h-[3000px] lg:min-h-[2800px]" id="track-container">
+<!-- Continuous Dramatic Mountain Switchback SVG Track (z-0 / z-5) -->
+<div class="absolute inset-0 w-full h-full pointer-events-none z-0">
+<svg class="w-full h-full" fill="none" id="road-svg-canvas" preserveAspectRatio="none" viewBox="0 0 1200 2800" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Finish Checkered Pattern -->
+<pattern height="24" id="checkers-pattern" patternUnits="userSpaceOnUse" width="24">
+<rect fill="#0f172a" height="12" width="12"></rect>
+<rect fill="#ffffff" height="12" width="12" x="12"></rect>
+<rect fill="#ffffff" height="12" width="12" y="12"></rect>
+<rect fill="#0f172a" height="12" width="12" x="12"></rect>
+</pattern>
+<!-- Crisp Red & White Racing Kerb Pattern -->
+<pattern height="14" id="kerb-strip" patternUnits="userSpaceOnUse" width="28">
+<rect fill="#EF4444" height="14" width="14"></rect>
+<rect fill="#FFFFFF" height="14" width="14" x="14"></rect>
+</pattern>
+<!-- Filter for Road Shadow / Depth -->
+<filter height="104%" id="road-shadow" width="110%" x="-5%" y="-2%">
+<feDropShadow dx="0" dy="10" flood-color="#000000" flood-opacity="0.16" stdDeviation="14"></feDropShadow>
+</filter>
+</defs>
+<!-- SWITCHBACK PATH DEFINITION -->
+<!-- 1. Track Outer Ground Clearance & Rumble Strip Kerbs (Thickest) -->
+<path d="M 130,50 
+               C 380,50 820,110 1020,260 
+               C 1140,350 1140,610 1000,700 
+               C 800,830 380,720 180,840 
+               C 60,910 60,1170 190,1250 
+               C 390,1370 820,1270 1010,1390 
+               C 1140,1470 1140,1730 1000,1810 
+               C 800,1930 390,1830 190,1950 
+               C 60,2030 60,2290 190,2370 
+               C 380,2480 810,2400 1000,2510 
+               C 1110,2570 1060,2700 850,2760
+               C 740,2790 640,2790 560,2790" filter="url(#road-shadow)" stroke="url(#kerb-strip)" stroke-linecap="round" stroke-linejoin="round" stroke-width="84"></path>
+<!-- 2. Dark Asphalt Track Body -->
+<path d="M 130,50 
+               C 380,50 820,110 1020,260 
+               C 1140,350 1140,610 1000,700 
+               C 800,830 380,720 180,840 
+               C 60,910 60,1170 190,1250 
+               C 390,1370 820,1270 1010,1390 
+               C 1140,1470 1140,1730 1000,1810 
+               C 800,1930 390,1830 190,1950 
+               C 60,2030 60,2290 190,2370 
+               C 380,2480 810,2400 1000,2510 
+               C 1110,2570 1060,2700 850,2760
+               C 740,2790 640,2790 560,2790" stroke="#1e293b" stroke-linecap="round" stroke-linejoin="round" stroke-width="66"></path>
+<!-- 3. Asphalt Surface Texture Tone -->
+<path d="M 130,50 
+               C 380,50 820,110 1020,260 
+               C 1140,350 1140,610 1000,700 
+               C 800,830 380,720 180,840 
+               C 60,910 60,1170 190,1250 
+               C 390,1370 820,1270 1010,1390 
+               C 1140,1470 1140,1730 1000,1810 
+               C 800,1930 390,1830 190,1950 
+               C 60,2030 60,2290 190,2370 
+               C 380,2480 810,2400 1000,2510 
+               C 1110,2570 1060,2700 850,2760
+               C 740,2790 640,2790 560,2790" opacity="0.4" stroke="#334155" stroke-linecap="round" stroke-linejoin="round" stroke-width="56"></path>
+<!-- 4. Bright Yellow Dashed Centerline -->
+<path d="M 130,50 
+               C 380,50 820,110 1020,260 
+               C 1140,350 1140,610 1000,700 
+               C 800,830 380,720 180,840 
+               C 60,910 60,1170 190,1250 
+               C 390,1370 820,1270 1010,1390 
+               C 1140,1470 1140,1730 1000,1810 
+               C 800,1930 390,1830 190,1950 
+               C 60,2030 60,2290 190,2370 
+               C 380,2480 810,2400 1000,2510 
+               C 1110,2570 1060,2700 850,2760
+               C 740,2790 640,2790 560,2790" id="race-road-track-path" stroke="#FFD000" stroke-dasharray="16 12" stroke-linecap="round" stroke-width="5"></path>
+<!-- Checkered Start Banner -->
+<g transform="translate(80, 24) rotate(-10)">
+<rect fill="url(#checkers-pattern)" height="20" rx="2" stroke="#000" stroke-width="2" width="90"></rect>
+</g>
+<!-- Checkered Finish Banner -->
+<g transform="translate(500, 2770)">
+<rect fill="url(#checkers-pattern)" height="22" rx="2" stroke="#000" stroke-width="2" width="110"></rect>
+</g>
+</svg>
+</div>
+<!-- MINI SOLAR CAR (HYPERION #66) VEHICLE CONTAINER: z-index 10, sits UNDER all cards & photo boxes -->
+<div class="absolute pointer-events-none z-10 transform -translate-x-1/2 -translate-y-1/2 opacity-0" id="mini-solar-car" style="left: 1063.84px; top: 1702.84px; opacity: 1; transform: translate(-50%, -50%) rotate(60.4824deg);">
+<div class="relative flex items-center justify-center">
+<!-- Mini Solar Car Top-Down Aero Wing Body (Clean graphic, no attached HUD/telemetry pill) -->
+<svg class="drop-shadow-lg transform transition-transform" fill="none" height="54" viewBox="0 0 86 54" width="86" xmlns="http://www.w3.org/2000/svg">
+<!-- Ground shadow footprint -->
+<ellipse cx="43" cy="27" fill="rgba(0,0,0,0.45)" filter="blur(3px)" rx="39" ry="23"></ellipse>
+<!-- Aerodynamic Catamaran / Wing Shell Outer White Gelcoat -->
+<path d="M 12 8 C 30 5, 56 5, 74 8 C 82 10, 85 18, 85 27 C 85 36, 82 44, 74 46 C 56 49, 30 49, 12 46 C 4 44, 1 36, 1 27 C 1 18, 4 10, 12 8 Z" fill="#F8FAFC" stroke="#0F172A" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Recessed Photovoltaic Solar Array Wings (Left & Right Banks) -->
+<!-- Left Solar Array Deck -->
+<path d="M 14 11 C 28 8, 40 8, 48 9 C 47 16, 46 22, 46 25 L 14 24 C 11 20, 11 15, 14 11 Z" fill="#0284C7" stroke="#0369A1" stroke-width="0.75"></path>
+<!-- Left Solar Array Cell Grid -->
+<line opacity="0.8" stroke="#E0F2FE" stroke-width="0.7" x1="22" x2="22" y1="9" y2="24"></line>
+<line opacity="0.8" stroke="#E0F2FE" stroke-width="0.7" x1="30" x2="30" y1="9" y2="24"></line>
+<line opacity="0.8" stroke="#E0F2FE" stroke-width="0.7" x1="38" x2="38" y1="9" y2="24"></line>
+<line opacity="0.8" stroke="#E0F2FE" stroke-width="0.7" x1="13" x2="47" y1="16" y2="16"></line>
+<!-- Right Solar Array Deck -->
+<path d="M 14 43 C 28 46, 40 46, 48 45 C 47 38, 46 32, 46 29 L 14 30 C 11 34, 11 39, 14 43 Z" fill="#0284C7" stroke="#0369A1" stroke-width="0.75"></path>
+<!-- Right Solar Array Cell Grid -->
+<line opacity="0.8" stroke="#E0F2FE" stroke-width="0.7" x1="22" x2="22" y1="30" y2="45"></line>
+<line opacity="0.8" stroke="#E0F2FE" stroke-width="0.7" x1="30" x2="30" y1="30" y2="45"></line>
+<line opacity="0.8" stroke="#E0F2FE" stroke-width="0.7" x1="38" x2="38" y1="30" y2="45"></line>
+<line opacity="0.8" stroke="#E0F2FE" stroke-width="0.7" x1="13" x2="47" y1="38" y2="38"></line>
+<!-- Rear Array & Solar Cell Highlights -->
+<rect fill="#0369A1" height="30" rx="3" stroke="#0284C7" stroke-width="0.75" width="22" x="50" y="12"></rect>
+<line opacity="0.8" stroke="#BAE6FD" stroke-width="0.7" x1="57" x2="57" y1="12" y2="42"></line>
+<line opacity="0.8" stroke="#BAE6FD" stroke-width="0.7" x1="64" x2="64" y1="12" y2="42"></line>
+<line opacity="0.8" stroke="#BAE6FD" stroke-width="0.7" x1="50" x2="72" y1="22" y2="22"></line>
+<line opacity="0.8" stroke="#BAE6FD" stroke-width="0.7" x1="50" x2="72" y1="32" y2="32"></line>
+<!-- Cockpit Teardrop Fairing & Glass Bubble Canopy (Driver Cell) -->
+<path d="M 28 27 C 28 22, 38 20, 52 21 C 60 22, 65 24, 66 27 C 65 30, 60 32, 52 33 C 38 34, 28 32, 28 27 Z" fill="#0F172A" stroke="#475569" stroke-width="1.2"></path>
+<!-- Glass Glare Accent -->
+<ellipse cx="44" cy="25" fill="#38BDF8" opacity="0.7" rx="10" ry="2.5"></ellipse>
+<!-- Iconic #66 Race Number Decal (Red on White Fairing) -->
+<text fill="#DC2626" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" letter-spacing="-0.5" text-anchor="middle" x="56" y="29.5">66</text>
+<!-- Front Nose Cone / Aero Leading Edge (Facing right x=85 in SVG coords) -->
+<path d="M 80 18 C 84 22, 85 27, 85 27 C 85 27, 84 32, 80 36" stroke="#EF4444" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Telemetry Whip Antenna Base -->
+<circle cx="28" cy="27" fill="#E2E8F0" r="1.5" stroke="#0F172A" stroke-width="0.75"></circle>
+<line stroke="#94A3B8" stroke-linecap="round" stroke-width="1" x1="28" x2="20" y1="27" y2="27"></line>
+<!-- Headlights / Telemetry LED Indicators -->
+<circle cx="83" cy="22" fill="#A6FF00" r="1"></circle>
+<circle cx="83" cy="32" fill="#A6FF00" r="1"></circle>
+</svg>
+</div>
+</div>
+<!-- START LINE BADGE (Top Left, z-20 so car goes underneath) -->
+
+<!-- 6 WAYPOINTS IN SERPENTINE SWITCHBACK SLOTS (All nodes, cards & visual slots styled z-20 / z-30 with opaque bg) -->
+<div class="flex flex-col gap-24 sm:gap-32 relative z-20 pt-4">
+<!-- ============================================================ -->
+<!-- WAYPOINT 01: Top Sweep (Road sweeps across from left to right) -->
+<!-- ============================================================ -->
+<div class="relative z-20 w-full">
+<!-- Blue Waypoint Circle Marker anchored directly on road curve -->
+<div class="relative z-30 flex items-center gap-3 mb-4 pl-4 sm:pl-16">
+<div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-accent-electric-blue text-white font-headline-sm font-extrabold flex items-center justify-center border-4 border-white ring-4 ring-accent-electric-blue/40 shadow-xl hover:scale-110 transition-transform">
+          01
+        </div>
+<div class="px-3 py-1 bg-canvas-base border-2 border-border-strong rounded shadow-xs font-label-mono-sm text-xs font-bold text-accent-electric-blue uppercase tracking-wider">
+          WAYPOINT 01 // ONBOARDING &amp; FOUNDATIONS
+        </div>
+</div>
+<!-- Content Box & Visual Card (z-20 opaque background) -->
+<div class="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-5xl pl-2 sm:pl-8">
+<!-- Content Card -->
+<div class="relative z-20 lg:col-span-7 border-2 border-border-strong bg-canvas-base p-space-lg shadow-md flex flex-col gap-space-sm hover:border-accent-electric-blue transition-all">
+<div class="flex items-center justify-between border-b border-border-muted pb-space-sm">
+<span class="inline-flex items-center gap-1.5 font-label-mono-sm text-xs font-bold text-accent-electric-blue bg-accent-electric-blue/10 px-2 py-0.5 border border-accent-electric-blue/30 rounded">
+<span class="material-symbols-outlined text-sm">flag</span>
+              FALL 2023 // RECRUIT
+            </span>
+<span class="font-label-mono-sm text-xs text-on-surface-variant font-semibold">STAGE 01</span>
+</div>
+<h3 class="font-headline-sm text-xl sm:text-2xl font-bold uppercase text-primary">
+            Joining the Team &amp; Foundations
+          </h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+            Stepped into the Rutgers Solar Car engineering lab as a freshman mechanical lead recruit. Onboarded into the chassis subteam by immersing in SolidWorks 3D tube weldment design, studying AISI 4130 chromoly properties, and decoding the comprehensive FSGP/ASC structural rulebook for occupant survival cells.
+          </p>
+<div class="flex flex-wrap gap-2 pt-2 border-t border-border-muted font-label-mono-sm text-[11px]">
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">SolidWorks Weldments</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">ASC Regulations</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">AISI 4130 Specs</span>
+</div>
+</div>
+<!-- Visual Slot -->
+<div class="relative z-20 lg:col-span-5 border-2 border-border-strong bg-canvas-base shadow-md overflow-hidden flex flex-col">
+<div class="cad-blueprint-grid w-full h-48 sm:h-56 bg-surface-subtle border-b border-border-strong flex flex-col items-center justify-center p-6 text-center relative group">
+<div class="w-12 h-12 rounded-full bg-accent-electric-blue/10 border border-accent-electric-blue/30 flex items-center justify-center text-accent-electric-blue mb-2 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-2xl">laptop_mac</span>
+</div>
+<span class="font-label-mono-sm text-xs font-bold text-primary uppercase tracking-wider">CAD ONBOARDING &amp; SHOP ORIENTATION</span>
+<span class="font-label-mono-sm text-[11px] text-on-surface-variant mt-1 max-w-xs">Initial spaceframe mockups, cut lists, and tubular dimension verification</span>
+<div class="absolute bottom-2 left-3 right-3 flex justify-between font-label-mono-sm text-[10px] text-accent-electric-blue">
+<span class="">SOLIDWORKS // ASSY 01</span>
+<span class="">CHASSIS INTRO</span>
+</div>
+</div>
+<div class="p-space-sm bg-canvas-base flex items-center justify-between font-label-mono-sm text-xs text-on-surface-variant">
+<span class="">PHOTO SLOT: Workshop &amp; CAD Initiation</span>
+<span class="text-primary font-semibold">FIG W1.1</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- WAYPOINT 02: First Hairpin on Far Right (Road turns 180° back) -->
+<!-- ============================================================ -->
+<div class="relative z-20 w-full flex flex-col items-end">
+<!-- Blue Waypoint Circle Marker on far right road hairpin -->
+<div class="relative z-30 flex items-center gap-3 mb-4 pr-4 sm:pr-16 flex-row-reverse">
+<div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-accent-electric-blue text-white font-headline-sm font-extrabold flex items-center justify-center border-4 border-white ring-4 ring-accent-electric-blue/40 shadow-xl hover:scale-110 transition-transform">
+          02
+        </div>
+<div class="px-3 py-1 bg-canvas-base border-2 border-border-strong rounded shadow-xs font-label-mono-sm text-xs font-bold text-accent-electric-blue uppercase tracking-wider">
+          WAYPOINT 02 // CHASSIS LEAD &amp; CAD
+        </div>
+</div>
+<!-- Content Box & Visual Card (z-20 opaque background) -->
+<div class="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-5xl pr-2 sm:pr-8 w-full">
+<!-- Visual Slot -->
+<div class="relative z-20 lg:col-span-5 order-2 lg:order-1 border-2 border-border-strong bg-canvas-base shadow-md overflow-hidden flex flex-col">
+<div class="cad-blueprint-grid w-full h-48 sm:h-56 bg-surface-subtle border-b border-border-strong flex flex-col items-center justify-center p-6 text-center relative group">
+<div class="w-12 h-12 rounded-full bg-accent-electric-blue/10 border border-accent-electric-blue/30 flex items-center justify-center text-accent-electric-blue mb-2 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-2xl">view_in_ar</span>
+</div>
+<span class="font-label-mono-sm text-xs font-bold text-primary uppercase tracking-wider">3D CAD SPACEFRAME ARCHITECTURE</span>
+<span class="font-label-mono-sm text-[11px] text-on-surface-variant mt-1 max-w-xs">Double wishbone hardpoints, survival cage envelope, and subframe nodal triangulations</span>
+<div class="absolute bottom-2 left-3 right-3 flex justify-between font-label-mono-sm text-[10px] text-accent-electric-blue">
+<span class="">AISI 4130 CHROMOLY</span>
+<span class="">38.4 KG TARE MASS</span>
+</div>
+</div>
+<div class="p-space-sm bg-canvas-base flex items-center justify-between font-label-mono-sm text-xs text-on-surface-variant">
+<span class="">PHOTO SLOT: Chassis 3D Model / Render</span>
+<span class="text-primary font-semibold">FIG W2.1</span>
+</div>
+</div>
+<!-- Content Card -->
+<div class="relative z-20 lg:col-span-7 order-1 lg:order-2 border-2 border-border-strong bg-canvas-base p-space-lg shadow-md flex flex-col gap-space-sm hover:border-accent-electric-blue transition-all">
+<div class="flex items-center justify-between border-b border-border-muted pb-space-sm">
+<span class="inline-flex items-center gap-1.5 font-label-mono-sm text-xs font-bold text-accent-electric-blue bg-accent-electric-blue/10 px-2 py-0.5 border border-accent-electric-blue/30 rounded">
+<span class="material-symbols-outlined text-sm">settings_suggest</span>
+              SPRING 2024 // PROMOTION
+            </span>
+<span class="font-label-mono-sm text-xs text-on-surface-variant font-semibold">STAGE 02</span>
+</div>
+<h3 class="font-headline-sm text-xl sm:text-2xl font-bold uppercase text-primary">
+            Spaceframe Chassis Lead &amp; Structural Design
+          </h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+            Promoted to Chassis Lead. Architected Hyperion's complete tubular spaceframe in SolidWorks 3D. Engineered gusseted suspension pick-up nodes to handle severe cornering loads, triangulated the roll hoop survival cell to guarantee 50mm clearance for 95th-percentile drivers, and integrated mounting hardpoints for high-voltage battery enclosures and the direct-drive in-wheel hub motor.
+          </p>
+<div class="flex flex-wrap gap-2 pt-2 border-t border-border-muted font-label-mono-sm text-[11px]">
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">Tubular Spaceframe</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">Suspension Kinematics</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">Roll Hoop Safety Cell</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- WAYPOINT 03: Second Hairpin on Far Left (Road turns 180° back)-->
+<!-- ============================================================ -->
+<div class="relative z-20 w-full">
+<!-- Blue Waypoint Circle Marker on far left road hairpin -->
+<div class="relative z-30 flex items-center gap-3 mb-4 pl-4 sm:pl-16">
+<div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-accent-electric-blue text-white font-headline-sm font-extrabold flex items-center justify-center border-4 border-white ring-4 ring-accent-electric-blue/40 shadow-xl hover:scale-110 transition-transform">
+          03
+        </div>
+<div class="px-3 py-1 bg-canvas-base border-2 border-border-strong rounded shadow-xs font-label-mono-sm text-xs font-bold text-accent-electric-blue uppercase tracking-wider">
+          WAYPOINT 03 // SIMULATION &amp; VDR
+        </div>
+</div>
+<!-- Content Box & Visual Card (z-20 opaque background) -->
+<div class="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-5xl pl-2 sm:pl-8">
+<!-- Content Card -->
+<div class="relative z-20 lg:col-span-7 border-2 border-border-strong bg-canvas-base p-space-lg shadow-md flex flex-col gap-space-sm hover:border-accent-electric-blue transition-all">
+<div class="flex items-center justify-between border-b border-border-muted pb-space-sm">
+<span class="inline-flex items-center gap-1.5 font-label-mono-sm text-xs font-bold text-accent-electric-blue bg-accent-electric-blue/10 px-2 py-0.5 border border-accent-electric-blue/30 rounded">
+<span class="material-symbols-outlined text-sm">analytics</span>
+              SUMMER 2024 // CRASH COMPLIANCE
+            </span>
+<span class="font-label-mono-sm text-xs text-on-surface-variant font-semibold">STAGE 03</span>
+</div>
+<h3 class="font-headline-sm text-xl sm:text-2xl font-bold uppercase text-primary">
+            FEA Stress Heatmaps &amp; Vehicle Design Report
+          </h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+            Executed rigorous finite element simulations in SolidWorks Simulation to validate occupant crash survival. Tested 5.0G frontal, lateral, and rear deceleration cases alongside 1.5G roll hoop compound loading. Authored technical documentation for the official ASC Vehicle Design Report (VDR), proving structural safety factors exceeding 1.25.
+          </p>
+<div class="grid grid-cols-2 gap-2 pt-2 border-t border-border-muted font-label-mono-sm text-xs">
+<div class="p-2 bg-surface-subtle border border-border-muted">
+<span class="text-on-surface-variant text-[10px] block">FRONT 5G STRESS:</span>
+<span class="font-bold text-primary">248 MPa (FoS &gt; 1.48)</span>
+</div>
+<div class="p-2 bg-surface-subtle border border-border-muted">
+<span class="text-on-surface-variant text-[10px] block">ROLL HOOP COMPOUND:</span>
+<span class="font-bold text-accent-electric-blue">310 MPa (FoS &gt; 1.25)</span>
+</div>
+</div>
+</div>
+<!-- FEA Heatmap Visual Slot -->
+<div class="relative z-20 lg:col-span-5 border-2 border-border-strong bg-canvas-base shadow-md overflow-hidden flex flex-col">
+<div class="w-full h-48 sm:h-56 bg-slate-900 border-b border-border-strong p-4 flex flex-col justify-between relative group">
+<div class="flex items-center justify-between z-10">
+<span class="font-label-mono-sm text-[10px] bg-red-600 text-white px-2 py-0.5 font-bold uppercase">5G DECEL IMPACT MESH</span>
+<span class="font-label-mono-sm text-[10px] text-white/80 font-mono">Von Mises Contour</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center my-auto z-10">
+<span class="material-symbols-outlined text-3xl text-amber-400 mb-1">grain</span>
+<span class="font-label-mono-sm text-xs font-bold text-white uppercase">CRASH SIMULATION HEATMAP</span>
+<span class="font-label-mono-sm text-[10px] text-slate-300">Nodal boundary conditions &amp; elastic deflection envelope</span>
+</div>
+<div class="w-full flex flex-col gap-1 z-10">
+<div class="w-full h-2 rounded-xs fea-stress-gradient"></div>
+<div class="flex justify-between font-label-mono-sm text-[9px] text-white/70">
+<span class="">0 MPa (Safe)</span>
+<span class="">248 MPa (Max)</span>
+<span class="">435 MPa (Yield)</span>
+</div>
+</div>
+</div>
+<div class="p-space-sm bg-canvas-base flex items-center justify-between font-label-mono-sm text-xs text-on-surface-variant">
+<span class="">VISUAL SLOT: FEA Stress Heatmaps &amp; VDR Plot</span>
+<span class="text-primary font-semibold">FIG W3.1</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- WAYPOINT 04: Third Hairpin on Far Right (Sweeps back across)  -->
+<!-- ============================================================ -->
+<div class="relative z-20 w-full flex flex-col items-end">
+<!-- Blue Waypoint Circle Marker on right road hairpin -->
+<div class="relative z-30 flex items-center gap-3 mb-4 pr-4 sm:pr-16 flex-row-reverse">
+<div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-accent-electric-blue text-white font-headline-sm font-extrabold flex items-center justify-center border-4 border-white ring-4 ring-accent-electric-blue/40 shadow-xl hover:scale-110 transition-transform">
+          04
+        </div>
+<div class="px-3 py-1 bg-canvas-base border-2 border-border-strong rounded shadow-xs font-label-mono-sm text-xs font-bold text-accent-electric-blue uppercase tracking-wider">
+          WAYPOINT 04 // SHOP FABRICATION &amp; TIG
+        </div>
+</div>
+<!-- Content Box & Visual Card (z-20 opaque background) -->
+<div class="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-5xl pr-2 sm:pr-8 w-full">
+<!-- Visual Slot -->
+<div class="relative z-20 lg:col-span-5 order-2 lg:order-1 border-2 border-border-strong bg-canvas-base shadow-md overflow-hidden flex flex-col">
+<div class="cad-blueprint-grid w-full h-48 sm:h-56 bg-surface-subtle border-b border-border-strong flex flex-col items-center justify-center p-6 text-center relative group">
+<div class="w-12 h-12 rounded-full bg-accent-electric-blue/10 border border-accent-electric-blue/30 flex items-center justify-center text-accent-electric-blue mb-2 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-2xl">construction</span>
+</div>
+<span class="font-label-mono-sm text-xs font-bold text-primary uppercase tracking-wider">MACHINE SHOP &amp; TIG JIG FABRICATION</span>
+<span class="font-label-mono-sm text-[11px] text-on-surface-variant mt-1 max-w-xs">Tube coping, cluster welds, composite aeroshell alignment, and dimensional metrology</span>
+<div class="absolute bottom-2 left-3 right-3 flex justify-between font-label-mono-sm text-[10px] text-accent-electric-blue">
+<span class="">ER70S-2 FILLER</span>
+<span class="">METROLOGY OK</span>
+</div>
+</div>
+<div class="p-space-sm bg-canvas-base flex items-center justify-between font-label-mono-sm text-xs text-on-surface-variant">
+<span class="">PHOTO SLOT: Shop Fabrication &amp; TIG Assembly</span>
+<span class="text-primary font-semibold">FIG W4.1</span>
+</div>
+</div>
+<!-- Content Card -->
+<div class="relative z-20 lg:col-span-7 order-1 lg:order-2 border-2 border-border-strong bg-canvas-base p-space-lg shadow-md flex flex-col gap-space-sm hover:border-accent-electric-blue transition-all">
+<div class="flex items-center justify-between border-b border-border-muted pb-space-sm">
+<span class="inline-flex items-center gap-1.5 font-label-mono-sm text-xs font-bold text-accent-electric-blue bg-accent-electric-blue/10 px-2 py-0.5 border border-accent-electric-blue/30 rounded">
+<span class="material-symbols-outlined text-sm">precision_manufacturing</span>
+              FALL 2024 // PROTOTYPING
+            </span>
+<span class="font-label-mono-sm text-xs text-on-surface-variant font-semibold">STAGE 04</span>
+</div>
+<h3 class="font-headline-sm text-xl sm:text-2xl font-bold uppercase text-primary">
+            Hands-on Shop Fabrication &amp; TIG Assembly
+          </h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+            Transitioned virtual models into physical hardware inside the machine shop. Hand-notched 4130 chromoly tubes to zero-gap fitment, secured nodes in a rigid laser-leveled alignment jig, and completed back-purged TIG (GTAW) passes. Integrated the lightweight carbon-fiber and fiberglass composite aeroshell with flush quick-release fasteners.
+          </p>
+<div class="flex flex-wrap gap-2 pt-2 border-t border-border-muted font-label-mono-sm text-[11px]">
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">TIG GTAW Welding</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">Tube Notching &amp; Jigs</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">Carbon Aeroshell Mounting</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- WAYPOINT 05: Fourth Hairpin on Far Left (Track hairpin loop)  -->
+<!-- ============================================================ -->
+<div class="relative z-20 w-full">
+<!-- Blue Waypoint Circle Marker on left road hairpin -->
+<div class="relative z-30 flex items-center gap-3 mb-4 pl-4 sm:pl-16">
+<div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-accent-electric-blue text-white font-headline-sm font-extrabold flex items-center justify-center border-4 border-white ring-4 ring-accent-electric-blue/40 shadow-xl hover:scale-110 transition-transform">
+          05
+        </div>
+<div class="px-3 py-1 bg-canvas-base border-2 border-border-strong rounded shadow-xs font-label-mono-sm text-xs font-bold text-accent-electric-blue uppercase tracking-wider">
+          WAYPOINT 05 // SCRUTINEERING &amp; TRACK
+        </div>
+</div>
+<!-- Content Box & Visual Card (z-20 opaque background) -->
+<div class="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-5xl pl-2 sm:pl-8">
+<!-- Content Card -->
+<div class="relative z-20 lg:col-span-7 border-2 border-border-strong bg-canvas-base p-space-lg shadow-md flex flex-col gap-space-sm hover:border-accent-electric-blue transition-all">
+<div class="flex items-center justify-between border-b border-border-muted pb-space-sm">
+<span class="inline-flex items-center gap-1.5 font-label-mono-sm text-xs font-bold text-accent-electric-blue bg-accent-electric-blue/10 px-2 py-0.5 border border-accent-electric-blue/30 rounded">
+<span class="material-symbols-outlined text-sm">fact_check</span>
+              COMPETITION 2024 // PADDOCK
+            </span>
+<span class="font-label-mono-sm text-xs text-on-surface-variant font-semibold">STAGE 05</span>
+</div>
+<h3 class="font-headline-sm text-xl sm:text-2xl font-bold uppercase text-primary">
+            Scrutineering Trials &amp; Trackside Paddock
+          </h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+            Arrived at the competition paddock for high-stakes technical scrutineering. Steered Hyperion through the official 30° tilt table stability test, executed unannounced 5-point harness emergency driver egress drills in under 10 seconds, proved dynamic dual-circuit hydraulic braking with zero lock drift, and configured CAN-bus telemetry.
+          </p>
+<div class="flex flex-wrap gap-2 pt-2 border-t border-border-muted font-label-mono-sm text-[11px]">
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">30° Rollover Tilt Pass</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">&lt; 10s Timed Driver Egress</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">Dynamic Braking Test</span>
+</div>
+</div>
+<!-- Visual Slot -->
+<div class="relative z-20 lg:col-span-5 border-2 border-border-strong bg-canvas-base shadow-md overflow-hidden flex flex-col">
+<div class="cad-blueprint-grid w-full h-48 sm:h-56 bg-surface-subtle border-b border-border-strong flex flex-col items-center justify-center p-6 text-center relative group">
+<div class="w-12 h-12 rounded-full bg-accent-electric-blue/10 border border-accent-electric-blue/30 flex items-center justify-center text-accent-electric-blue mb-2 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-2xl">balance</span>
+</div>
+<span class="font-label-mono-sm text-xs font-bold text-primary uppercase tracking-wider">STATIC TILT &amp; TRACK INSPECTION BAY</span>
+<span class="font-label-mono-sm text-[11px] text-on-surface-variant mt-1 max-w-xs">Rollover angle verification, pad braking telemetry, and dynamic skidpad sign-offs</span>
+<div class="absolute bottom-2 left-3 right-3 flex justify-between font-label-mono-sm text-[10px] text-accent-electric-blue">
+<span class="">TILTING ANGLE: 30.0°</span>
+<span class="">STATUS: TRACK CLEARED</span>
+</div>
+</div>
+<div class="p-space-sm bg-canvas-base flex items-center justify-between font-label-mono-sm text-xs text-on-surface-variant">
+<span class="">PHOTO SLOT: Trackside &amp; Paddock Tests</span>
+<span class="text-primary font-semibold">FIG W5.1</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- WAYPOINT 06: Final Sweep to Finish Line & Executive Leadership-->
+<!-- ============================================================ -->
+<div class="relative z-20 w-full flex flex-col items-center">
+<!-- Blue Waypoint Circle Marker anchored before finish line -->
+<div class="relative z-30 flex items-center gap-3 mb-4">
+<div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-accent-hyper-orange text-white font-headline-sm font-extrabold flex items-center justify-center border-4 border-white ring-4 ring-accent-hyper-orange/40 shadow-xl hover:scale-110 transition-transform">
+          06
+        </div>
+<div class="px-3 py-1 bg-canvas-base border-2 border-border-strong rounded shadow-xs font-label-mono-sm text-xs font-bold text-accent-hyper-orange uppercase tracking-wider">
+          WAYPOINT 06 // EXECUTIVE LEADERSHIP &amp; FINISH LINE
+        </div>
+</div>
+<!-- Content Box & Visual Card (z-20 opaque background) -->
+<div class="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-5xl w-full px-2 sm:px-4">
+<!-- Content Card -->
+<div class="relative z-20 lg:col-span-7 border-2 border-border-strong bg-canvas-base p-space-lg shadow-md flex flex-col gap-space-sm hover:border-accent-hyper-orange transition-all">
+<div class="flex items-center justify-between border-b border-border-muted pb-space-sm">
+<span class="inline-flex items-center gap-1.5 font-label-mono-sm text-xs font-bold text-accent-hyper-orange bg-accent-hyper-orange/10 px-2 py-0.5 border border-accent-hyper-orange/30 rounded">
+<span class="material-symbols-outlined text-sm">groups</span>
+              PRESENT // VICE PRESIDENT
+            </span>
+<span class="font-label-mono-sm text-xs text-on-surface-variant font-semibold">FINAL STAGE</span>
+</div>
+<h3 class="font-headline-sm text-xl sm:text-2xl font-bold uppercase text-primary">
+            Stepping into Leadership &amp; Vice Presidency
+          </h3>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
+            Elected <strong class="text-primary font-semibold">Vice President</strong> of the Rutgers Solar Car Team. Scaled responsibilities to directing 50+ cross-functional student engineers spanning mechanical, electrical, aero, and strategy subteams. Secured critical machining and material sponsorships, spearheaded inter-team design sprints, and managed trailer haul logistics for out-of-state race operations.
+          </p>
+<div class="flex flex-wrap gap-2 pt-2 border-t border-border-muted font-label-mono-sm text-[11px]">
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">50+ Member Engineering Org</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">Corporate Sponsorships</span>
+<span class="px-2 py-0.5 bg-surface-subtle border border-border-muted text-primary font-medium">Track Operations &amp; Logistics</span>
+</div>
+</div>
+<!-- Visual Slot -->
+<div class="relative z-20 lg:col-span-5 border-2 border-border-strong bg-canvas-base shadow-md overflow-hidden flex flex-col">
+<div class="cad-blueprint-grid w-full h-48 sm:h-56 bg-surface-subtle border-b border-border-strong flex flex-col items-center justify-center p-6 text-center relative group">
+<div class="w-12 h-12 rounded-full bg-accent-hyper-orange/10 border border-accent-hyper-orange/30 flex items-center justify-center text-accent-hyper-orange mb-2 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-2xl">military_tech</span>
+</div>
+<span class="font-label-mono-sm text-xs font-bold text-primary uppercase tracking-wider">TEAM ROSTER &amp; RACE CREW PADDOCK</span>
+<span class="font-label-mono-sm text-[11px] text-on-surface-variant mt-1 max-w-xs">Full organization race deploy, driver handover protocols, and executive board debrief</span>
+<div class="absolute bottom-2 left-3 right-3 flex justify-between font-label-mono-sm text-[10px] text-accent-hyper-orange font-bold">
+<span class="">RUTGERS SOLAR CAR TEAM</span>
+<span class="">VP DIRECTORY</span>
+</div>
+</div>
+<div class="p-space-sm bg-canvas-base flex items-center justify-between font-label-mono-sm text-xs text-on-surface-variant">
+<span class="">PHOTO SLOT: Team Photo &amp; Paddock Crew</span>
+<span class="text-primary font-semibold">FIG W6.1</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- FINISH LINE ROAD BADGE -->
+</div>
+</div>
+</section>
+<!-- 4. KEY ENGINEERING TAKEAWAYS & IMPACT SUMMARY -->
+<!-- 5. NEXT PROJECT RECIRCULATION NAV -->
+</div>
+</main>
+<!-- 6. CLEAN HORIZONTAL CONTACT FOOTER -->
+<footer class="w-full border-t-2 border-border-strong bg-canvas-base py-space-md" id="contact">
+<div class="w-full max-w-7xl mx-auto px-gutter lg:px-gutter-desktop flex flex-wrap items-center justify-between gap-space-md font-label-mono-sm text-xs tracking-wider uppercase">
+<!-- Left: Contact info -->
+<div class="flex flex-wrap items-center gap-space-md sm:gap-space-lg text-primary font-semibold">
+<span class="text-on-surface-variant">CONTACT &gt;</span>
+<a class="hover:text-accent-electric-blue transition-colors normal-case font-mono" href="mailto:jakatesimran@gmail.com">
+      jakatesimran@gmail.com
+    </a>
+<span class="text-border-muted hidden sm:inline">|</span>
+<a class="hover:text-accent-electric-blue transition-colors font-mono" href="tel:+19089920879">
+      +1 (908) 992-0879
+    </a>
+<span class="text-border-muted hidden sm:inline">|</span>
+<a class="hover:text-accent-electric-blue transition-colors flex items-center gap-1 normal-case" href="https://www.linkedin.com/in/simran-jakate" rel="noopener noreferrer" target="_blank">
+<span class="">LinkedIn</span>
+<span class="text-accent-electric-blue">↗</span>
+</a>
+</div>
+<!-- Right: Back to top -->
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-subtle hover:bg-primary hover:text-on-primary border border-border-strong text-primary transition-all shadow-xs font-label-mono-sm text-xs font-semibold cursor-pointer" href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+<span class="">BACK TO TOP</span>
+<span class="">↑</span>
+</a>
+</div>
+</footer>
+<!-- 7. SCROLL-DRIVEN TRACK VEHICLE SCRIPT -->
+<script>
+  (function() {
+    const trackSection = document.getElementById('track-section');
+    const trackContainer = document.getElementById('track-container');
+    const roadPath = document.getElementById('race-road-track-path');
+    const miniCar = document.getElementById('mini-solar-car');
+
+    if (!trackSection || !trackContainer || !roadPath || !miniCar) return;
+
+    let totalLength = 0;
+    function computeLength() {
+      try {
+        totalLength = roadPath.getTotalLength();
+      } catch (e) {
+        console.warn('SVG path total length could not be computed:', e);
+      }
+    }
+    computeLength();
+
+    let targetProgress = 0;
+    let currentProgress = 0;
+    let isTicking = false;
+
+    function calculateScrollProgress() {
+      const containerRect = trackContainer.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      // Start when the top of the track container reaches mid-screen (45% viewport)
+      // and finish when the bottom of the container reaches the lower third of viewport
+      const startTrigger = windowHeight * 0.45;
+      const endTrigger = windowHeight * 0.75;
+      const totalScrollSpan = containerRect.height - (endTrigger - startTrigger);
+
+      const scrolledDistance = startTrigger - containerRect.top;
+      let progress = scrolledDistance / (totalScrollSpan > 0 ? totalScrollSpan : containerRect.height);
+      progress = Math.max(0, Math.min(1, progress));
+      targetProgress = progress;
+
+      // Visibility toggle: visible throughout the container's presence on screen
+      if (containerRect.bottom < 0 || containerRect.top > windowHeight) {
+        miniCar.style.opacity = '0';
+      } else {
+        miniCar.style.opacity = '1';
+      }
+
+      if (!isTicking) {
+        requestAnimationFrame(renderCarMotion);
+        isTicking = true;
+      }
+    }
+
+    function renderCarMotion() {
+      currentProgress += (targetProgress - currentProgress) * 0.14;
+
+      if (totalLength > 0) {
+        const containerRect = trackContainer.getBoundingClientRect();
+        
+        // SVG viewBox dimensions (1200 x 2800)
+        const vbWidth = 1200;
+        const vbHeight = 2800;
+
+        const scaleX = containerRect.width / vbWidth;
+        const scaleY = containerRect.height / vbHeight;
+
+        // Current distance along curve
+        const distance = currentProgress * totalLength;
+        const point = roadPath.getPointAtLength(distance);
+
+        // Forward tangent vector for steering direction
+        const delta = 4;
+        const nextDist = Math.min(totalLength, distance + delta);
+        const prevDist = Math.max(0, distance - delta);
+        const pAhead = roadPath.getPointAtLength(nextDist);
+        const pBehind = roadPath.getPointAtLength(prevDist);
+
+        // Compute angle incorporating container scale
+        const dx = (pAhead.x - pBehind.x) * scaleX;
+        const dy = (pAhead.y - pBehind.y) * scaleY;
+        const angleRad = Math.atan2(dy, dx);
+        const angleDeg = (angleRad * 180) / Math.PI;
+
+        // Container-space coordinates
+        const posX = point.x * scaleX;
+        const posY = point.y * scaleY;
+
+        miniCar.style.left = `${posX}px`;
+        miniCar.style.top = `${posY}px`;
+        miniCar.style.transform = `translate(-50%, -50%) rotate(${angleDeg}deg)`;
+      }
+
+      if (Math.abs(targetProgress - currentProgress) > 0.0004) {
+        requestAnimationFrame(renderCarMotion);
+      } else {
+        isTicking = false;
+      }
+    }
+
+    // Event listeners for responsive tracking
+    window.addEventListener('scroll', calculateScrollProgress, { passive: true });
+    window.addEventListener('resize', () => {
+      computeLength();
+      calculateScrollProgress();
+    });
+
+    // Immediate initial call on DOMContentLoaded and Load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        computeLength();
+        calculateScrollProgress();
+      });
+    } else {
+      computeLength();
+      calculateScrollProgress();
+    }
+    window.addEventListener('load', () => {
+      computeLength();
+      calculateScrollProgress();
+    });
+    setTimeout(() => {
+      computeLength();
+      calculateScrollProgress();
+    }, 150);
+  })();
+</script>
+
+
+</body></html>
